@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1, "ObjectExpression": 1, "ImportDeclaration": 1 }],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/indent": ["error", 2],
+    "no-case-declarations": 0,
+    "@typescript-eslint/camelcase": 0,
+    "no-trailing-spaces": ["error"],
+    "curly": ["error"],
+    "eqeqeq": ["error"],
+    "no-alert": ["error"],
+    "no-eq-null": ["error"],
+    "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true, "argsIgnorePattern": "^_", "args": "all" }],
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "object-curly-spacing": ["error", "always"],
+    "space-before-blocks": ["error"],
+    "arrow-spacing": ["error"],
+    "array-callback-return": "error",
+    "spaced-comment": ["error", "always"],
+    "no-mixed-operators": "error",
+    "max-len": ["error", { "code": 200 }],
+    "one-var": ["error", "never"],
+    "no-unreachable": "error",
+    "semi": "error"
+  }
+}
