@@ -1,8 +1,11 @@
 import { SocketService } from './services/socket';
 import logs from './services/logs';
 
+// heroku env
+const PORT = process.env.PORT || 3000;
+
 export class App {
-  public static readonly SOCKET_PORT: number = 3005;
+  public static readonly SOCKET_PORT: number = PORT ? Number(PORT) : 3005;
   private socketPort: number;
   protected socketService: SocketService;
 

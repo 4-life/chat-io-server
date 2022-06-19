@@ -4,6 +4,10 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
+  "env": {
+    "node": true,
+    "commonjs": true
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint/eslint-plugin"],
   "rules": {
