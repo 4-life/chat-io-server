@@ -1,4 +1,3 @@
-require('dotenv').config();
 import { SocketService } from './services/socket';
 import logs from './services/logs';
 

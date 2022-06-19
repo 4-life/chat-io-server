@@ -1,14 +1,14 @@
-// @ts-ignore
-import { createServer } from "http";
-// @ts-ignore
-import { io as Client } from "socket.io-client";
-// @ts-ignore
-import { Server } from "socket.io";
-// @ts-ignore
-import { assert } from "chai";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createServer } from 'http';
+import { io as Client } from 'socket.io-client';
+import { Server } from 'socket.io';
+import { assert } from 'chai';
+import { after, before, describe, it } from 'mocha';
 
-describe("my awesome project", () => {
-  let io, serverSocket, clientSocket;
+describe('my awesome project', () => {
+  let io;
+  let serverSocket;
+  let clientSocket;
 
   before((done) => {
     const httpServer = createServer();
@@ -17,10 +17,10 @@ describe("my awesome project", () => {
       const port = (httpServer.address() as any)['port'];
       const url = `http://localhost:${port}`;
       clientSocket = new (Client as any)(url);
-      io.on("connection", (socket) => {
+      io.on('connection', (socket) => {
         serverSocket = socket;
       });
-      clientSocket.on("connect", done);
+      clientSocket.on('connect', done);
     });
   });
 
@@ -29,20 +29,20 @@ describe("my awesome project", () => {
     clientSocket.close();
   });
 
-  it("should work", (done) => {
-    clientSocket.on("hello", (arg) => {
-      assert.equal(arg, "world");
+  it('should work', (done) => {
+    clientSocket.on('hello', (arg) => {
+      assert.equal(arg, 'world');
       done();
     });
-    serverSocket.emit("hello", "world");
+    serverSocket.emit('hello', 'world');
   });
 
-  it("should work (with ack)", (done) => {
-    serverSocket.on("hi", (cb) => {
-      cb("hola");
+  it('should work (with ack)', (done) => {
+    serverSocket.on('hi', (cb) => {
+      cb('hola');
     });
-    clientSocket.emit("hi", (arg) => {
-      assert.equal(arg, "hola");
+    clientSocket.emit('hi', (arg) => {
+      assert.equal(arg, 'hola');
       done();
     });
   });

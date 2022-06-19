@@ -15,7 +15,7 @@ export class SocketService {
     const httpServer = createServer();
     this.io = new Server(httpServer, {
       cors: {
-        origin: "*"
+        origin: '*'
       }
     });
     this.io.on(SocketServerActions.CONNECTION, (socket) => this.connectSocket(socket));
@@ -68,7 +68,6 @@ export class SocketService {
   }
 
   private userLeave(id: number) {
-    console.log('############# userLeave');
     const index = this.users.findIndex((user) => user.id === id);
 
     if (index >= 0) {

@@ -1,6 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line no-undef
 const debug = require('debug');
 
+// eslint-disable-next-line no-undef
 const DEBUG = !!process.env.DEBUG;
 
 const LOG = {
@@ -10,10 +11,12 @@ const LOG = {
   socket: debug('socket'),
 };
 
+// eslint-disable-next-line no-undef
 debug.log = console.info.bind(console);
 
 function info(text: string): void {
   if (DEBUG) {
+    // eslint-disable-next-line no-undef
     console.info('Info:', text);
   }
 }

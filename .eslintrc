@@ -1,18 +1,11 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended"],
   "parserOptions": {
-    "project": "./tsconfig.json",
-    "tsconfigRootDir": "."
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint/eslint-plugin",
-    "@typescript-eslint"
-  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint/eslint-plugin"],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1, "ObjectExpression": 1, "ImportDeclaration": 1 }],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
