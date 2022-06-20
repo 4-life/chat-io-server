@@ -3,6 +3,9 @@ import { Server, Socket } from 'socket.io';
 
 import logs from './logs';
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketActions, SocketServerActions, UserData, UserMessage } from '../types';
+import env from '../environment';
+
+const { CLIENT_URL } = env();
 
 export class SocketService {
   private io: Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, UserData>;
@@ -15,7 +18,8 @@ export class SocketService {
     const httpServer = createServer();
     this.io = new Server(httpServer, {
       cors: {
-        origin: '*'
+        origin: CLIENT_URL,
+        methods: ['GET', 'POST'],
       }
     });
     this.io.on(SocketServerActions.CONNECTION, (socket) => this.connectSocket(socket));
@@ -61,7 +65,10 @@ export class SocketService {
     const exist = this.messagesList.find((m) => m.id === msg.id);
 
     if (!exist) {
-      this.messagesList.push(msg);
+      this.messagesList.push({
+        ...msg,
+        status: 'received',
+      });
     }
 
     this.io.emit(SocketActions.MESSAGES, this.messagesList);
