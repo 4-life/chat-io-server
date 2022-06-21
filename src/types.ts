@@ -1,3 +1,5 @@
+import { Socket } from 'socket.io';
+
 export interface UserData {
   id: number;
   name: string;
@@ -40,6 +42,8 @@ export interface ClientToServerEvents {
   [SocketActions.MESSAGE_REMOVE]: (id: number) => void;
   [SocketActions.USER_LEAVE]: (id: number) => void;
 }
+
+export type ServerSocketInstance = Socket<ClientToServerEvents, ServerToClientEvents, InterServerEvents, UserData>;
 
 export interface InterServerEvents {
   ping: () => void;

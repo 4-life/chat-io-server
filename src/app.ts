@@ -14,7 +14,9 @@ export class App {
     this.socketService = new SocketService(this.socketPort);
   }
 
-  getApp() {
+  public getApp() {
     logs.addBreadcrumbs(`Running socket on port ${this.socketPort} 🚀`, 'server');
+
+    return this.socketService;
   }
 }

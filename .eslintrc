@@ -33,6 +33,7 @@
     "max-len": ["error", { "code": 200 }],
     "one-var": ["error", "never"],
     "no-unreachable": "error",
+    "no-console": "error",
     "semi": "error"
   }
 }

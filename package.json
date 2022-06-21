@@ -6,7 +6,7 @@
     "lint": "eslint --ext '.ts' .",
     "build": "npx tsc",
     "start": "NODE_ENV='production' node dist/index.js",
-    "test": "npx tsc && DEBUG=true node_modules/mocha/bin/_mocha --exit ./dist/test"
+    "test": "npx tsc && DEBUG=true node_modules/mocha/bin/_mocha --exit ./dist/tests"
   },
   "dependencies": {
     "express": "^4.18.1",
