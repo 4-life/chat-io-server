@@ -1,10 +1,9 @@
 name: Test and build chat-io-server
 
 on:
-  workflow_dispatch:
+  push:
     paths:
       - src/**
-  push:
     branches:
     - master
 
