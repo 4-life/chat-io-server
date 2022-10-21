@@ -46,6 +46,7 @@ export class SocketService {
 
     socket.on(SocketActions.USER_ADD, (user) => this.userAdd(user, socket.id));
     socket.on(SocketActions.USER_LEAVE, (id) => this.userLeave(id));
+    socket.on(SocketActions.USERS_GET, () => this.getUsers());
     socket.on(SocketActions.MESSAGE_GET, () => this.getMessages());
     socket.on(SocketActions.MESSAGE_ADD, (msg) => this.messageAdd(msg));
     socket.on(SocketActions.MESSAGE_REMOVE, (id) => this.messageRemove(id));
@@ -99,6 +100,10 @@ export class SocketService {
       this.io.emit(SocketActions.USERS, this.users);
       this.io.emit(SocketActions.MESSAGES, this.messagesList);
     }
+  }
+
+  private getUsers() {
+    this.io.emit(SocketActions.USERS, this.users);
   }
 
   private getMessages() {

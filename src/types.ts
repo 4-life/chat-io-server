@@ -28,6 +28,7 @@ export enum SocketActions {
   MESSAGE_REMOVE = 'message:remove',
   USERS = 'users',
   MESSAGES = 'messages',
+  USERS_GET = 'users:get',
 }
 
 export interface ServerToClientEvents {
@@ -38,6 +39,7 @@ export interface ServerToClientEvents {
 export interface ClientToServerEvents {
   [SocketActions.USER_ADD]: (user: UserData) => void;
   [SocketActions.MESSAGE_GET]: () => void;
+  [SocketActions.USERS_GET]: () => void;
   [SocketActions.MESSAGE_ADD]: (message: UserMessage) => void;
   [SocketActions.MESSAGE_REMOVE]: (id: number) => void;
   [SocketActions.USER_LEAVE]: (id: number) => void;

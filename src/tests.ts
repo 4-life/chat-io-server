@@ -87,8 +87,24 @@ describe('Test Zen chat sockets', () => {
     clientSockets.forEach(client => client.close());
   });
 
+  it('should return empty user list', (done) => {
+    clientSockets[0].once(SocketActions.USERS, users => {
+      assert.equal(users.length, 0);
+      done();
+    });
+    clientSockets[0].emit(SocketActions.USERS_GET);
+  });
+
   it('should add new user', (done) => {
     addUser(clientSockets[0], dummyUser1, done);
+  });
+
+  it('should return user list with 1 item', (done) => {
+    clientSockets[0].once(SocketActions.USERS, users => {
+      assert.equal(users.length, 1);
+      done();
+    });
+    clientSockets[0].emit(SocketActions.USERS_GET);
   });
 
   it('should add another user', (done) => {
