@@ -42,7 +42,7 @@ jobs:
           key: modules-${{ hashFiles('package-lock.json') }}
 
       - name: Build the app
-        run: npm run build && cp app.yaml ./dist
+        run: npm run build
 
       - name: Google Cloud Auth
         uses: 'google-github-actions/auth@v2'
@@ -55,4 +55,4 @@ jobs:
 
       - name: Deploy to Google App Engine
         run: |
-          cd dist && gcloud app deploy app.yaml --quiet
+          gcloud app deploy app.yaml --quiet
