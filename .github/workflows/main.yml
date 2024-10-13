@@ -2,8 +2,6 @@ name: Test and build chat-io-server
 
 on:
   push:
-    paths:
-      - src/**
     branches:
     - master
 
